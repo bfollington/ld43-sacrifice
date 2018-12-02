@@ -82,7 +82,7 @@ public class EndScene : MonoBehaviour
 
 		if (!fired && player != null)
 		{
-			if (true || Checklist.IsComplete)
+			if (Checklist.IsComplete)
 			{
 				fired = true;
 				BeginScene();

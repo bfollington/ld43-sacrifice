@@ -42,6 +42,7 @@ public class SwordScene : MonoBehaviour
 		Player.GetSword();
 		yield return new WaitForSeconds(0.3f);
 		yield return new WaitUntil(() => Input.GetButtonUp("Jump"));
+		yield return new WaitForSeconds(0.1f);
 		
 		Checklist.GetSword();
 		
