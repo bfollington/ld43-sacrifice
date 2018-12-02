@@ -8,8 +8,8 @@ public class Checklist : MonoBehaviour
 	public Image SwordStrike;
 	public Image ShieldStrike;
 
-	private bool HasSword = false;
-	private bool HasShield = false;
+	private bool _hasSword = false;
+	private bool _hasShield = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,12 +19,12 @@ public class Checklist : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (HasSword)
+		if (_hasSword)
 		{
 			SwordStrike.canvasRenderer.SetAlpha(1);
 		}
 		
-		if (HasShield)
+		if (_hasShield)
 		{
 			ShieldStrike.canvasRenderer.SetAlpha(1);
 		}
@@ -32,18 +32,23 @@ public class Checklist : MonoBehaviour
 
 	public void GetSword()
 	{
-		HasSword = true;
+		_hasSword = true;
 	}
 
 	public void GetShield()
 	{
-		HasShield = true;
+		_hasShield = true;
 	}
 
 	public bool IsComplete
 	{
 		get {
-			return HasShield && HasShield;
+			return _hasShield && _hasShield;
 		}
+	}
+
+	public bool HasSword
+	{
+		get { return _hasSword; }
 	}
 }

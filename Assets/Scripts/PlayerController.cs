@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour, IHurtable
     public Animator Animator;
     public SpriteRenderer SpriteRenderer;
     public GameObject AttackHurtbox;
+    public Checklist Checklist;
 
     #endregion
 
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour, IHurtable
                         StartCoroutine(Roll(move));
                     }
                 
-                    if (Input.GetButton("Attack"))
+                    if (Checklist.HasSword && Input.GetButton("Attack"))
                     {
                         StartCoroutine(Attack());
                     }

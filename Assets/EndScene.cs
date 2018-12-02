@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Pixelplacement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndScene : MonoBehaviour
 {
@@ -53,7 +54,22 @@ public class EndScene : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		Player.Sacrifice();
 			
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(3f);
+		
+		TextBox.Say("Man, I love my job.");
+		yield return new WaitUntil(() => Input.GetButtonUp("Jump"));
+		yield return new WaitForSeconds(0.1f);
+		TextBox.Done();
+		
+		yield return new WaitForSeconds(2f);
+		
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("End");
+
+		// Wait until the asynchronous scene fully loads
+		while (!asyncLoad.isDone)
+		{
+			yield return null;
+		}
 		
 		Player.EnableControl();
 	}

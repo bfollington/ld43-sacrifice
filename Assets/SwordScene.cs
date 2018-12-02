@@ -44,7 +44,15 @@ public class SwordScene : MonoBehaviour
 		
 		Checklist.GetSword();
 		
+		TextBox.Say("Bet you could break stuff with that...");
+		yield return new WaitUntil(() => Input.GetButtonUp("Jump"));
+		yield return new WaitForSeconds(0.1f);
+		
+		TextBox.Say("Use it by pressing Ctrl or\n<X> on the controller!");
+		yield return new WaitUntil(() => Input.GetButtonUp("Jump"));
+		yield return new WaitForSeconds(0.1f);
 		TextBox.Done();
+		
 		Player.EnableControl();
 		Player.EnableAnimation();
 		
