@@ -33,6 +33,7 @@ public class ShieldScene : MonoBehaviour
 		Player.Stop();
 		yield return new WaitForSeconds(0.2f);
 		
+		GetComponent<AudioSource>().Play();
 		TextBox.Say("Got the shield!");
 		TextBox.transform.localScale = new Vector3(1.2f, 1.2f, 1);
 		Tween.LocalScale(TextBox.transform, new Vector3(1, 1, 1), 0.6f, 0, Tween.EaseBounce);

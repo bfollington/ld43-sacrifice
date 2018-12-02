@@ -9,10 +9,12 @@ public class Textbox : MonoBehaviour
 	public Image Bg;
 	public TextMeshProUGUI Text;
 	public Image MoreIndicator;
-	
+	private AudioSource _speechSfx;
+
 	// Use this for initialization
 	void Start () {
 		Hide();
+		_speechSfx = GetComponent<AudioSource>();
 	}
 
 	private void Show()
@@ -34,6 +36,7 @@ public class Textbox : MonoBehaviour
 	{
 		Show();
 		Text.text = text;
+		_speechSfx.Play();
 	}
 
 	public void Done()

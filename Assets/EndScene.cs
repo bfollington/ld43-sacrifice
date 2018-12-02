@@ -12,6 +12,7 @@ public class EndScene : MonoBehaviour
 	public Animator PlayerAnimator;
 	public Priest Priest;
 	private bool fired = false;
+	public AudioSource SacrificeSound;
 	
 	// Use this for initialization
 	void Start ()
@@ -52,6 +53,7 @@ public class EndScene : MonoBehaviour
 
 		Priest.GrabHeart();
 		yield return new WaitForSeconds(0.5f);
+		SacrificeSound.Play();
 		Player.Sacrifice();
 			
 		yield return new WaitForSeconds(3f);
@@ -80,7 +82,7 @@ public class EndScene : MonoBehaviour
 
 		if (!fired && player != null)
 		{
-			if (Checklist.IsComplete)
+			if (true || Checklist.IsComplete)
 			{
 				fired = true;
 				BeginScene();

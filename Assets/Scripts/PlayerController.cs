@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour, IHurtable
     public GameObject AttackHurtbox;
     public Checklist Checklist;
 
+    public AudioSource JumpSound;
+    public AudioSource RollSound;
+    public AudioSource HurtSound;
+    public AudioSource StabSound;
+
     #endregion
 
     // Use this for initialization
@@ -160,17 +165,20 @@ public class PlayerController : MonoBehaviour, IHurtable
                 if (Input.GetButton("Jump"))
                 {
                     _moveDirection.y = JumpSpeed;
+                    JumpSound.Play();
                 }
                 
                 if (!_isRolling && !_isAttacking)
                 {
                     if (Input.GetButton("Roll"))
                     {
+                        RollSound.Play();
                         StartCoroutine(Roll(move));
                     }
                 
                     if (Checklist.HasSword && Input.GetButton("Attack"))
                     {
+                        StabSound.Play();
                         StartCoroutine(Attack());
                     }
                 }
@@ -274,6 +282,7 @@ public class PlayerController : MonoBehaviour, IHurtable
 
     public void Hurt(float damage)
     {
+        HurtSound.Play();
         transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         Tween.LocalScale(transform, new Vector3(1, 1, 1), 0.5f, 0, Tween.EaseBounce);
     }

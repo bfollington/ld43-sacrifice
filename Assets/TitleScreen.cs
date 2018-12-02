@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour {
+	private AudioSource _beginSfx;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		_beginSfx = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -15,6 +17,7 @@ public class TitleScreen : MonoBehaviour {
 		if (Input.GetButtonDown("Jump"))
 		{
 			// Use a coroutine to load the Scene in the background
+			_beginSfx.Play();
 			StartCoroutine(LoadYourAsyncScene());
 		}
 	}

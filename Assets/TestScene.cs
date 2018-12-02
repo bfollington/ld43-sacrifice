@@ -9,11 +9,12 @@ public class TestScene : MonoBehaviour
 	public Checklist Checklist;
 	public PlayerController Player;
 	private bool fired = false;
-	
+	private AudioSource _beginSfx;
+
 	// Use this for initialization
 	void Start ()
 	{
-		
+		_beginSfx = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -54,6 +55,7 @@ public class TestScene : MonoBehaviour
 		yield return new WaitUntil(() => Input.GetButtonUp("Jump"));
 		yield return new WaitForSeconds(0.1f);
 
+		_beginSfx.Play();
 		Checklist.gameObject.SetActive(true);
 		
 		TextBox.Done();

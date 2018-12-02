@@ -9,6 +9,8 @@ public class Breakable : MonoBehaviour, IHurtable
 
 	public float Health;
 	public SpriteRenderer Sprite;
+	public AudioSource HitSound;
+	public AudioSource BreakSound;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,12 @@ public class Breakable : MonoBehaviour, IHurtable
 
 		if (Health <= 0)
 		{
+			BreakSound.Play();
 			Destroy(gameObject);
+		}
+		else
+		{
+			HitSound.Play();
 		}
 	}
 }
